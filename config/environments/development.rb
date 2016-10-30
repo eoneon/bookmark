@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
+  # Defines default url options in your environments files. Here
+  #    is an example of default_url_options appropriate for a development environment
 end
