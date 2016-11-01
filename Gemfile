@@ -25,6 +25,7 @@ source 'https://rubygems.org'
  gem 'devise'
  gem 'pundit'
  gem 'pry'
+ gem 'rename'
 
  group :development, :test do
    gem 'byebug'
