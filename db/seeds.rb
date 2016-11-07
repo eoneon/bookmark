@@ -1,11 +1,30 @@
-require 'random_data'
+require 'faker'
 
-15.times do
-   Topic.create!(
-     title:         RandomData.random_sentence,
-   )
- end
- topics = Topic.all
+5.times do
+  User.create!(
+    email:    Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
+users = User.all
 
- puts "Seed finished"
- puts "#{Topic.count} topics created"
+5.times do
+  Topic.create!(
+    title:  Faker::Lorem.word
+  )
+end
+topics = Topic.all
+
+5.times do
+  Bookmark.create!(
+    url:    Faker::Internet.url,
+    topic:  topics.sample,
+    user:   users.sample
+  )
+end
+
+
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Topic.count} topics created"
+puts "#{Bookmark.count} bookmarks created"
