@@ -1,0 +1,12 @@
+<% @topics.each do |topic| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to topic.title, topic %>
+      </h4>
+      <small>
+        <%= render partial: 'bookmarks/bookmark', locals: { bookmarks: topic.bookmarks } %>
+      </small>
+    </div>
+  </div>
+<% end %>

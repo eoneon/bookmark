@@ -12,17 +12,17 @@
         <li><%= link_to "Topics", root_path %></li>
         <li><%= link_to "About", about_path %></li>
       </ul>
+      <div class="pull-right user-info">
+        <% if user_signed_in? %>
+          Signed in as: <strong><%= link_to current_user.email, user_path(current_user) %></strong> <br/>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% end %>
 
-      <% if user_signed_in? %>
-        Signed in as: <strong><%= link_to current_user.email, user_path(current_user) %></strong> <br/>
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% end %>
-
-      <% if not user_signed_in? %>
-        <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
-        <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-
+        <% if not user_signed_in? %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
+          <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+      </div>
       <div class="flash">
         <% if flash[:notice] %>
           <div class="alert alert-dismissible alert-success">
