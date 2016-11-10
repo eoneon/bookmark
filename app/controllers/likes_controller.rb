@@ -4,9 +4,10 @@ class LikesController < ApplicationController
 
   def create
     @bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+    @like = current_user.likes.build(bookmark: @bookmark)
+    authorize @like
 
-    if like.save
+    if @like.save
       flash[:notice] = "Link liked."
     else
       flash[:alert] = "Liked failed."
@@ -17,9 +18,10 @@ class LikesController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+    @like = current_user.likes.find(params[:id])
+    authorize @like
 
-    if like.destroy
+    if @like.destroy
       flash[:notice] = "Link unliked."
     else
       flash[:alert] = "Unliked failed."

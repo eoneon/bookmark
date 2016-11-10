@@ -12,6 +12,7 @@ class BookmarksController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.build(bookmark_params)
+    @bookmark.user = current_user
     authorize @bookmark
 
     if @bookmark.save
@@ -31,7 +32,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     @bookmark.assign_attributes(bookmark_params)
     authorize @bookmark
-    
+
     if @bookmark.save
       flash[:notice] = "Bookmark was updated successfully."
       redirect_to [@bookmark.topic, @bookmark]
