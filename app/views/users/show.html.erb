@@ -5,6 +5,7 @@
         <h2 class="media-heading"><%= @user.email %></h2>
         <% @user_liked_bookmarks.each do |bookmark| %>
           <li><%= bookmark.url %></li>
+          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         <% end %>
       </div>
     </div>
