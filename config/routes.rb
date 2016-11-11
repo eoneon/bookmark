@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: [] do
     resources :likes, only: [:index, :create, :destroy]
   end
-
+  post 'incoming' => 'incoming#incoming'
   get 'about' => 'welcome#about'
   get 'welcome' => 'welcome#index'
 end

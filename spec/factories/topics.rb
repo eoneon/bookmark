@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :topic do
-    title "MyString"
+    title { RandomData.random_word }
     user nil
   end
 end
