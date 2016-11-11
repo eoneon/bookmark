@@ -1,5 +1,7 @@
 class IncomingController < ApplicationController
   skip_before_filter :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  
   def incoming
     email = params[:from]
     user = User.find_by(email: email)
