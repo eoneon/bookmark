@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   root 'topics#index'
   devise_for :users
   resources :users, only: :show

@@ -3,6 +3,9 @@
     <div class="media">
       <div class="media-body">
         <h2 class="media-heading"><%= @user.email %></h2>
+        <% @user_liked_bookmarks.each do |bookmark| %>
+          <li><%= bookmark.url %></li>
+        <% end %>
       </div>
     </div>
   </div>

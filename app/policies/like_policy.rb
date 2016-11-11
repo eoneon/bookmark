@@ -11,7 +11,7 @@ class LikePolicy < ApplicationPolicy
   end
 
   def create?
-    @user.present? && (@like.bookmark.user == @user)
+    user.present? 
   end
 
   def destroy?
